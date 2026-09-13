@@ -64,6 +64,7 @@ export default defineConfig([
         files: ["**/*.{ts,astro}"],
         rules: {
             "block-scoped-var": ["error"],
+            "unicorn/name-replacements": ["off"],
             "unicorn/no-keyword-prefix": ["off"],
             "unicorn/prevent-abbreviations": ["off"],
             "unicorn/text-encoding-identifier-case": [
