@@ -45,6 +45,7 @@
     },
     "devDependencies": {
         "@arethetypeswrong/core": "^0.18.4",
+        "@astrojs/cloudflare": "^14.3.0",
         "@grepco/astro-fixture": "workspace:*",
         "@types/node": "catalog:",
         "astro": "catalog:",
@@ -53,7 +54,8 @@
         "tsdown": "catalog:",
         "typescript": "catalog:",
         "vite": "^8.0.0",
-        "vitest": "^5.0.0"
+        "vitest": "^5.0.0",
+        "wrangler": "^4.129.0"
     },
     "peerDependencies": {
         "astro": "^6.0.0 || ^7.0.0"
