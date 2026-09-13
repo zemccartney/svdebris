@@ -1,0 +1,26 @@
+[settings]
+activate_aggressive = true
+pin = true
+lockfile = true
+locked_verify_provenance = true
+minimum_release_age = "7d"
+
+[tools]
+hk = "1.56.1"
+node = "24"
+pnpm = "12.3.4"
+
+[hooks]
+enter = ["mise install --locked", "mise x -- hk install --mise"]
+
+[tasks.check]
+description = "Run format, lint, typecheck and tests across tracked files"
+run = "hk check --all --check"
+
+[tasks.setup]
+description = "Install dependencies and git hooks after mise install --locked"
+run = ["pnpm install --frozen-lockfile", "hk install --mise"]
+
+[tasks.fix]
+description = "Run every check, applying fixes where a fixer exists"
+run = "hk fix --all"

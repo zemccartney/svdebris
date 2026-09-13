@@ -1,0 +1,69 @@
+{
+    "name": "@grepco/astro-image-svg",
+    "version": "0.0.0",
+    "description": "An Astro image service that leaves SVGs alone: one emitted file per source, correct dimensions, no /_image request, optimized with svgo",
+    "keywords": [
+        "astro",
+        "astro-integration",
+        "svg",
+        "images"
+    ],
+    "homepage": "https://github.com/zemccartney/astro-image-svg",
+    "bugs": {
+        "url": "https://github.com/zemccartney/astro-image-svg/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zemccartney/astro-image-svg.git"
+    },
+    "license": "MIT",
+    "author": "Zack McCartney <zack@grepco.net>",
+    "sideEffects": false,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.mts",
+            "import": "./dist/index.mjs"
+        },
+        "./service": {
+            "types": "./dist/service.d.mts",
+            "import": "./dist/service.mjs"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsdown",
+        "dev": "tsdown --watch",
+        "pretest": "tsdown",
+        "test": "vitest --run",
+        "typecheck": "tsdown && tsc -b"
+    },
+    "dependencies": {
+        "svgo": "^4.1.0"
+    },
+    "devDependencies": {
+        "@arethetypeswrong/core": "^0.18.4",
+        "@grepco/astro-fixture": "workspace:*",
+        "@types/node": "catalog:",
+        "astro": "catalog:",
+        "publint": "^0.3.21",
+        "sharp": "^0.35.4",
+        "tsdown": "catalog:",
+        "typescript": "catalog:",
+        "vite": "^8.0.0",
+        "vitest": "^5.0.0"
+    },
+    "peerDependencies": {
+        "astro": "^6.0.0 || ^7.0.0"
+    },
+    "engines": {
+        "node": "24"
+    },
+    "publishConfig": {
+        "engines": {
+            "node": ">=22.12.0"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "https://unpkg.com/knip@5/schema.json",
+    "tags": ["-lintignore"],
+    "workspaces": {
+        ".": {
+            "entry": ["scripts/*.ts"],
+            "ignoreDependencies": ["@grepco/astro-image-svg"]
+        },
+        "packages/astro-fixture": {
+            "entry": ["src/astro-fixture.ts", "src/test-adapter.ts"]
+        },
+        "packages/astro-image-svg": {
+            "ignore": ["tests/**"],
+            "ignoreDependencies": ["svgo"]
+        }
+    }
+}

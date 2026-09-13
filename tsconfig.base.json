@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        // environment
+        "lib": ["esnext"],
+        "jsx": "preserve",
+        "types": [],
+
+        // module system behavior
+        "allowImportingTsExtensions": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "module": "nodenext",
+        "moduleDetection": "force",
+        "noUncheckedSideEffectImports": true,
+        "resolveJsonModule": true,
+        // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-7.html#path-rewriting-for-relative-paths
+        // can write out imports as .ts, not .js (supports direct execution, recommended by node's
+        // docs for type-stripping https://nodejs.org/docs/latest-v22.x/api/typescript.html#type-stripping)
+        "rewriteRelativeImportExtensions": true,
+        "verbatimModuleSyntax": true,
+
+        // output / publishing
+        "noEmit": true,
+
+        // typechecking
+        "allowJs": false,
+        "erasableSyntaxOnly": true,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
+        "strict": true
+    },
+    "files": []
+}

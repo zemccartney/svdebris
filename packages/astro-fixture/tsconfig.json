@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.tsbuildinfo",
+        "types": ["node"]
+    },
+    "extends": "../../tsconfig.base.json",
+    "include": ["src/**/*.ts"]
+}

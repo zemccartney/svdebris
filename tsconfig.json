@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "types": ["node"]
+    },
+    "extends": "./tsconfig.base.json",
+    "files": ["eslint.config.ts", "scripts/use-astro.ts"]
+}

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "lib": ["es2023"],
+        "module": "preserve",
+        "isolatedDeclarations": true,
+        "tsBuildInfoFile": "../node_modules/.tmp/tsconfig.src.tsbuildinfo",
+        "composite": true,
+        "noEmit": false,
+        "emitDeclarationOnly": true,
+        "declarationDir": "../node_modules/.tmp/src-declarations"
+    },
+    "extends": "../../../tsconfig.base.json",
+    "include": ["**/*.ts"]
+}

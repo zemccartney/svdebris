@@ -1,0 +1,42 @@
+amends "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Builtins.pkl"
+
+local fast = new Mapping<String, Step> {
+    ["prettier"] = (Builtins.prettier) {
+      check = "pnpm exec prettier --check {{files}}"
+      check_list_files = "pnpm exec prettier --list-different {{files}}"
+      fix = "pnpm exec prettier --write {{files}}"
+    }
+    ["lint"] = {
+      glob = "**/*.{js,mjs,cjs,ts,astro,json,jsonc}"
+      check = "pnpm exec eslint --flag unstable_native_nodejs_ts_config --no-warn-ignored {{files}}"
+      fix = "pnpm exec eslint --flag unstable_native_nodejs_ts_config --no-warn-ignored --fix {{files}}"
+    }
+    ["typecheck"] = {
+      check = "pnpm typecheck"
+    }
+}
+
+local full = (fast) {
+    ["test"] = {
+      check = "pnpm test"
+    }
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        stage = true
+        stash = "git"
+        steps = fast
+    }
+    ["fix"] {
+        fix = true
+        stage = false
+        steps = full
+    }
+    ["check"] {
+        fix = false
+        steps = full
+    }
+}
