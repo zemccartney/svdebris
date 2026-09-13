@@ -1,0 +1,53 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+permissions:
+    contents: read
+
+jobs:
+    checks:
+        name: Static checks
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+            - uses: pnpm/action-setup@008330803749db0355799c700092d9a85fd074e9 # v6.0.9
+            - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+              with:
+                  node-version: "24"
+                  cache: pnpm
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm audit --prod
+            - run: pnpm lint
+            - run: pnpm fmt
+            - run: pnpm knip
+            - run: pnpm typecheck
+
+    test:
+        name: Test (astro ${{ matrix.astro }} · node ${{ matrix.node }})
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - astro: "7"
+                      node: "24"
+                    - astro: "6"
+                      node: "24"
+                    - astro: "7"
+                      node: "22.12"
+        steps:
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+            - uses: pnpm/action-setup@008330803749db0355799c700092d9a85fd074e9 # v6.0.9
+            - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+              with:
+                  node-version: ${{ matrix.node }}
+                  cache: pnpm
+            - if: matrix.astro == '7'
+              run: pnpm install --frozen-lockfile
+            - if: matrix.astro != '7'
+              run: node scripts/use-astro.ts ${{ matrix.astro }}
+            - run: pnpm --filter @grepco/astro-image-svg test
