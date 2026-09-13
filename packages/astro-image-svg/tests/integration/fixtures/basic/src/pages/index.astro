@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+
+import logo from "../assets/logo.svg";
+import photo from "../assets/photo.png";
+---
+
+<html lang="en">
+    <head><title>basic</title></head>
+    <body>
+        <Image
+            alt="logo 36"
+            src={logo}
+            width={36}
+        />
+        <Image
+            alt="logo 72"
+            src={logo}
+            width={72}
+        />
+        <Image
+            alt="logo h50"
+            height={50}
+            src={logo}
+        />
+        <Image
+            alt="logo layout"
+            layout="constrained"
+            src={logo}
+            width={36}
+        />
+        <Image
+            alt="photo 200"
+            src={photo}
+            width={200}
+        />
+        <Image
+            alt="photo 100"
+            src={photo}
+            width={100}
+        />
+        <img
+            alt="plain"
+            height="18"
+            src={logo.src}
+            width="36"
+        />
+    </body>
+</html>
