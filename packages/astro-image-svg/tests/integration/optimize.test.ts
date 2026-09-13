@@ -1,31 +1,15 @@
-import type { AstroIntegration } from "astro";
-
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, test } from "vitest";
 
-import { DEFAULT_SVGO, optimizeSvgs } from "../../src/optimize.ts";
+import svgImages from "../../src/index.ts";
 import { isolatedFixture } from "../utils/isolated-fixture.ts";
 import { required } from "../utils/stubs.ts";
-
-const service = { entrypoint: "@grepco/astro-image-svg/service" };
-
-// Task 8 replaces this with the real integration; here the pass is wired
-// by hand so the two can be tested independently.
-const passOnly: AstroIntegration = {
-    hooks: {
-        "astro:build:done": async ({ dir, logger }) => {
-            await optimizeSvgs(dir, DEFAULT_SVGO, logger);
-        }
-    },
-    name: "pass-only"
-};
 
 async function build(shouldOptimize: boolean) {
     const { cleanup, fixture, root } = await isolatedFixture("basic");
     await fixture.build({
-        image: { service },
-        integrations: shouldOptimize ? [passOnly] : []
+        integrations: [svgImages({ optimize: shouldOptimize })]
     });
     const assets = await readdir(path.join(root, "dist/_astro"));
     const svg = required(

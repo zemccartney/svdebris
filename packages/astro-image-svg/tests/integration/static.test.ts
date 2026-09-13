@@ -2,15 +2,14 @@ import { readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, test } from "vitest";
 
+import svgImages from "../../src/index.ts";
 import { imgTags } from "../utils/html.ts";
 import { isolatedFixture } from "../utils/isolated-fixture.ts";
 import { required } from "../utils/stubs.ts";
 
 const { cleanup, fixture, root } = await isolatedFixture("basic");
 
-const config = {
-    image: { service: { entrypoint: "@grepco/astro-image-svg/service" } }
-};
+const config = { integrations: [svgImages({ optimize: false })] };
 
 afterAll(() => cleanup());
 
