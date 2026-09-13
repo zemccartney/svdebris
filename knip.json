@@ -10,8 +10,8 @@
             "entry": ["src/astro-fixture.ts", "src/test-adapter.ts"]
         },
         "packages/astro-image-svg": {
-            "ignore": ["tests/**"],
-            "ignoreDependencies": ["svgo"]
+            "entry": ["src/optimize.ts!"],
+            "ignore": ["tests/**"]
         }
     }
 }
