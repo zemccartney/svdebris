@@ -8,9 +8,6 @@ export default defineConfig({
         // module cache per worker; threads avoids fork overhead.
         isolate: false,
         maxWorkers: 3,
-        // Task 1 only: no tests exist yet, and vitest 5 exits 1 on an empty
-        // run. Task 2 adds real tests and removes this.
-        passWithNoTests: true,
         pool: "threads",
         reporters: "tree",
         testTimeout: 120_000
