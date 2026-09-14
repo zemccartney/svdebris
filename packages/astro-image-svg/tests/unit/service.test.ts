@@ -127,5 +127,6 @@ describe("everything else is sharp's", () => {
         expect(service.parseURL).toBe(sharpService.parseURL);
         expect(service.getHTMLAttributes).toBe(sharpService.getHTMLAttributes);
         expect(service.getSrcSet).toBe(sharpService.getSrcSet);
+        expect(service.getRemoteSize).toBe(sharpService.getRemoteSize);
     });
 });

@@ -1,8 +1,10 @@
 ---
-import { Image } from "astro:assets";
+import { getImage, Image, Picture } from "astro:assets";
 
 import logo from "../assets/logo.svg";
 import photo from "../assets/photo.png";
+
+const viaGetImage = await getImage({ src: logo, width: 36 });
 ---
 
 <html lang="en">
@@ -38,6 +40,18 @@ import photo from "../assets/photo.png";
             alt="photo 100"
             src={photo}
             width={100}
+        />
+        <Picture
+            alt="picture"
+            formats={["svg"]}
+            src={logo}
+            width={36}
+        />
+        <img
+            alt="getimage"
+            height={viaGetImage.attributes.height}
+            src={viaGetImage.src}
+            width={viaGetImage.attributes.width}
         />
         <img
             alt="plain"

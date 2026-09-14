@@ -2,11 +2,10 @@ import { readdir } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, test } from "vitest";
 
+import svgImages from "../../src/index.ts";
 import { imgTags } from "../utils/html.ts";
 import { isolatedFixture } from "../utils/isolated-fixture.ts";
 import { required } from "../utils/stubs.ts";
-
-const service = { entrypoint: "@grepco/astro-image-svg/service" };
 
 // The requirement is parity with the plain <img src={logo.src}> tag in the
 // fixture: however Astro rewrites that URL for base or assetsPrefix, <Image>
@@ -14,7 +13,10 @@ const service = { entrypoint: "@grepco/astro-image-svg/service" };
 async function srcs(inline: Parameters<typeof isolatedFixture>[1]) {
     const { cleanup, fixture, root } = await isolatedFixture("basic");
     try {
-        await fixture.build({ ...inline, image: { service } });
+        await fixture.build({
+            ...inline,
+            integrations: [svgImages({ optimize: false })]
+        });
         const tags = imgTags((await fixture.readFile("/index.html")) ?? "");
         const assets = await readdir(path.join(root, "dist/_astro"));
         return {

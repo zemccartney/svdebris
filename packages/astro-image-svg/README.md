@@ -2,7 +2,7 @@
 
 An Astro image service that leaves SVGs alone.
 
-Pass an imported SVG to `<Image>`, `<Picture>`, `getImage()`, a markdown image or a content-collection image field and you get one emitted file per source, referenced directly, with the width and height Astro derives from the source. No per-size variants, no `/_image` request in dev, build or production. Raster images are untouched: this is Astro's own sharp service with one method changed.
+Pass an imported SVG to `<Image>`, `<Picture formats={["svg"]}>`, `getImage()`, a markdown image or a content-collection image field and you get one emitted file per source, referenced directly, with the width and height Astro derives from the source. No per-size variants, no `/_image` request in dev, build or production. Raster images are untouched: this is Astro's own sharp service with one method changed.
 
 Emitted SVGs are also optimized with svgo after the build.
 
@@ -52,12 +52,18 @@ The optimize pass runs after Astro has named the files, so the content hash in a
 
 Do not add `removeViewBox` to a custom svgo config: without a viewBox an SVG stops scaling to the requested width and height.
 
+If another integration replaces `image.service.entrypoint` after this one runs, the integration throws at startup, naming the replacement it found instead. `image.service.config` passes through unchanged to sharp, so its `limitInputPixels`, `kernel`, and per-format encoder options all still apply.
+
 ## What it does not touch
 
 - An SVG referenced by string path from `public/` or a remote URL. Astro already serves the former as-is; the latter keeps Astro's remote handling.
 - GIF, AVIF, or any raster. Sharp's behavior, including animated GIF and AVIF output at build.
 - Runtime image transformation. None is added.
+- An explicit raster `format` on an SVG source, including `<Picture>`'s default `formats`. That request goes to sharp exactly as in stock Astro: a build error unless `image.dangerouslyProcessSVG` is on, in which case sharp rasterizes it.
+- An SVG whose emitted URL is remote-allowed: with `build.assetsPrefix` pointing at a host that is also listed in `image.domains` or `image.remotePatterns`, Astro treats the asset URL as a processable remote image and the bypass does not apply.
 
 ## Requirements
 
 Astro 6 or 7. sharp installed, as Astro's own sharp service requires.
+
+`@astrojs/cloudflare` 14 pairs with Astro 7 and 13 with Astro 6; the package's own tests run both.

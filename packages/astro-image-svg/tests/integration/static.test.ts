@@ -46,6 +46,31 @@ describe("static build with the service", () => {
         for (const img of svgImgs) {
             expect(img["src"]).toBe(plain);
         }
+
+        const viaGetImage = required(
+            tags.find((t) => t["alt"] === "getimage"),
+            "getimage <img>"
+        );
+        expect(viaGetImage["src"]).toBe(plain);
+        expect(viaGetImage["width"]).toBe("36");
+        expect(viaGetImage["height"]).toBe("18");
+
+        // <Picture src={logo} formats={["svg"]}> renders a <source> for the
+        // one requested format plus a fallback <img>; both resolve to the
+        // same bypassed asset URL as the plain <img>.
+        const viaPicture = required(
+            tags.find((t) => t["alt"] === "picture"),
+            "picture <img>"
+        );
+        expect(viaPicture["src"]).toBe(plain);
+        const sourceSrcset = required(
+            /<source\b[^>]*srcset="([^"]*)"[^>]*>/.exec(index)?.[1],
+            "<picture>'s <source> srcset"
+        );
+        expect(sourceSrcset).toBe(plain);
+
+        expect(index).not.toContain("/_image");
+        expect(assets.filter((f) => f.endsWith(".svg"))).toHaveLength(1);
     });
 
     test("width and height are what Astro derives from the 100×50 source", () => {

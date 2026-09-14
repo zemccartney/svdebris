@@ -4,7 +4,7 @@ import type { Config as SvgoConfig } from "svgo";
 import { DEFAULT_SVGO, optimizeSvgs } from "./optimize.ts";
 
 /**
-What the integration sets as `image.service.entrypoint`.
+ * What the integration sets as `image.service.entrypoint`.
  */
 export const ENTRYPOINT = "@grepco/astro-image-svg/service";
 
