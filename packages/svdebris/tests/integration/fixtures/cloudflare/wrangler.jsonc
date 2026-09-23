@@ -3,5 +3,5 @@
     "compatibility_date": "2025-03-21",
     "compatibility_flags": ["nodejs_compat"],
     "main": "@astrojs/cloudflare/entrypoints/server",
-    "name": "astro-image-svg-fixture"
+    "name": "svdebris-fixture"
 }

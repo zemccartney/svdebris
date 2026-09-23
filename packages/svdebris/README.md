@@ -1,6 +1,10 @@
-# @grepco/astro-image-svg
+# @grepco/svdebris
 
 An Astro image service that leaves SVGs alone.
+
+## The name
+
+This is an Astro integration despite the name. Most integrations carry an `astro-` prefix, but the prefix is only a convention, and the name would rather say what the thing does: it deals with the debris Astro's image pipeline leaves behind for SVGs, the duplicate files and needless `/_image` requests. Keywords carry `astro` and `astro-integration` so it still turns up where integrations are searched for.
 
 Pass an imported SVG to `<Image>`, `<Picture formats={["svg"]}>`, `getImage()`, a markdown image or a content-collection image field and you get one emitted file per source, referenced directly, with the width and height Astro derives from the source. No per-size variants, no `/_image` request in dev, build or production. Raster images are untouched: this is Astro's own sharp service with one method changed.
 
@@ -9,14 +13,14 @@ Emitted SVGs are also optimized with svgo after the build.
 ## Install
 
 ```sh
-npx astro add @grepco/astro-image-svg
+npx astro add @grepco/svdebris
 ```
 
 or by hand:
 
 ```js
 // astro.config.mjs
-import svgImages from "@grepco/astro-image-svg";
+import svgImages from "@grepco/svdebris";
 
 export default defineConfig({
     integrations: [svgImages()]

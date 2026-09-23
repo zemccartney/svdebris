@@ -8,7 +8,7 @@ type FixtureConfig = Omit<AstroInlineConfig, "root">;
 
 // Temp dirs must be within the package tree so Vite can walk up and find
 // node_modules and package.json for module resolution, including the
-// package self-reference that resolves "@grepco/astro-image-svg/service".
+// package self-reference that resolves "@grepco/svdebris/service".
 const packageRoot = path.resolve(
     new URL(".", import.meta.url).pathname,
     "../.."

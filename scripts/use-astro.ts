@@ -6,7 +6,7 @@
  * package's `@astrojs/cloudflare` devDependency range (the adapter releases
  * a major per Astro major), then runs `pnpm install --no-frozen-lockfile`.
  * Restore with:
- *   git restore pnpm-workspace.yaml packages/astro-image-svg/package.json pnpm-lock.yaml && pnpm install
+ *   git restore pnpm-workspace.yaml packages/svdebris/package.json pnpm-lock.yaml && pnpm install
  */
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
@@ -42,7 +42,7 @@ if (rewrittenYaml === workspaceYaml && !workspaceYaml.includes(`^${major}.`)) {
 }
 writeFileSync(workspaceFile, rewrittenYaml);
 
-const packageFile = "packages/astro-image-svg/package.json";
+const packageFile = "packages/svdebris/package.json";
 const packageJson = readFileSync(packageFile, "utf-8");
 writeFileSync(
     packageFile,

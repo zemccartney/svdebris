@@ -133,9 +133,9 @@ importers:
       '@eslint/json':
         specifier: ^2.1.0
         version: 2.1.0
-      '@grepco/astro-image-svg':
+      '@grepco/svdebris':
         specifier: workspace:*
-        version: link:packages/astro-image-svg
+        version: link:packages/svdebris
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.3
@@ -198,7 +198,7 @@ importers:
         specifier: 'catalog:'
         version: 6.0.3
 
-  packages/astro-image-svg:
+  packages/svdebris:
     dependencies:
       svgo:
         specifier: ^4.1.0

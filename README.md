@@ -1,3 +1,3 @@
-# astro-image-svg
+# svdebris
 
-Workspace for [`@grepco/astro-image-svg`](packages/astro-image-svg). See its README.
+Workspace for [`@grepco/svdebris`](packages/svdebris). See its README.

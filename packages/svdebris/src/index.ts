@@ -6,7 +6,7 @@ import { DEFAULT_SVGO, optimizeSvgs } from "./optimize.ts";
 /**
  * What the integration sets as `image.service.entrypoint`.
  */
-export const ENTRYPOINT = "@grepco/astro-image-svg/service";
+export const ENTRYPOINT = "@grepco/svdebris/service";
 
 export interface Options {
     /**
@@ -44,7 +44,7 @@ export default function svgImages({
                 const actual = config.image.service.entrypoint;
                 if (actual !== ENTRYPOINT) {
                     throw new Error(
-                        `[astro-image-svg] image.service.entrypoint is "${actual}", expected "${ENTRYPOINT}". Another integration replaced the image service after this one ran.`
+                        `[svdebris] image.service.entrypoint is "${actual}", expected "${ENTRYPOINT}". Another integration replaced the image service after this one ran.`
                     );
                 }
             },
@@ -73,6 +73,6 @@ export default function svgImages({
                 });
             }
         },
-        name: "@grepco/astro-image-svg"
+        name: "@grepco/svdebris"
     };
 }

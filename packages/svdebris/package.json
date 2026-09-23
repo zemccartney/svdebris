@@ -1,5 +1,5 @@
 {
-    "name": "@grepco/astro-image-svg",
+    "name": "@grepco/svdebris",
     "version": "0.0.0",
     "description": "An Astro image service that leaves SVGs alone: one emitted file per source, correct dimensions, no /_image request, optimized with svgo",
     "keywords": [
@@ -8,13 +8,13 @@
         "svg",
         "images"
     ],
-    "homepage": "https://github.com/zemccartney/astro-image-svg",
+    "homepage": "https://github.com/zemccartney/svdebris",
     "bugs": {
-        "url": "https://github.com/zemccartney/astro-image-svg/issues"
+        "url": "https://github.com/zemccartney/svdebris/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/zemccartney/astro-image-svg.git"
+        "url": "git+https://github.com/zemccartney/svdebris.git"
     },
     "license": "MIT",
     "author": "Zack McCartney <zack@grepco.net>",

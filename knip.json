@@ -4,12 +4,12 @@
     "workspaces": {
         ".": {
             "entry": ["scripts/*.ts"],
-            "ignoreDependencies": ["@grepco/astro-image-svg"]
+            "ignoreDependencies": ["@grepco/svdebris"]
         },
         "packages/astro-fixture": {
             "entry": ["src/astro-fixture.ts", "src/test-adapter.ts"]
         },
-        "packages/astro-image-svg": {
+        "packages/svdebris": {
             "ignore": ["tests/**"]
         }
     }

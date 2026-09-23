@@ -50,4 +50,4 @@ jobs:
               run: pnpm install --frozen-lockfile
             - if: matrix.astro != '7'
               run: node scripts/use-astro.ts ${{ matrix.astro }}
-            - run: pnpm --filter @grepco/astro-image-svg test
+            - run: pnpm --filter @grepco/svdebris test

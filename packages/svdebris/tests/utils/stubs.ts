@@ -18,7 +18,7 @@ export function imageConfig(): ImageConfigArgument {
             route: "/_image"
         },
         remotePatterns: [],
-        service: { config: {}, entrypoint: "@grepco/astro-image-svg/service" }
+        service: { config: {}, entrypoint: "@grepco/svdebris/service" }
     } as unknown as ImageConfigArgument;
 }
 

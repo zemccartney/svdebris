@@ -21,7 +21,7 @@ export default defineConfig([
     {
         // Fixtures import the package by name; a relative path from the
         // copied fixture directory would not point at the source.
-        files: ["packages/astro-image-svg/tests/integration/fixtures/**"],
+        files: ["packages/svdebris/tests/integration/fixtures/**"],
         rules: { "workspaces/no-absolute-imports": "off" }
     },
     {
